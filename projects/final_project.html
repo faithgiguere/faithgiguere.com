@@ -3,126 +3,93 @@
 
 <!-- Head -->
 <head>
-
-<title>Final Project</title>
-
-<!-- Meta-Tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="keywords" content="Opulent a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
-<base href="../" >
-<!-- //Meta-Tags -->
-
-<!-- Custom-Stylesheet-Links -->
-<!-- Bootstrap-CSS -->  <link rel="stylesheet" href="css/bootstrap.min.css"     type="text/css" media="all">
-<!-- Index-Page-CSS --> <link rel="stylesheet" href="css/style.css"                 type="text/css" media="all">
-<!-- FontAwesome-CSS --><link rel="stylesheet" href="css/font-awesome.min.css"  type="text/css" media="all">
-<!-- Projects -->       <link rel="stylesheet" href="css/projects.css"  type="text/css" media="all">
-<!-- //Custom-Stylesheet-Links -->
-
-<!-- Fonts -->
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700"              type="text/css" media="all">
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"  type="text/css" media="all">
-<!-- //Fonts -->
-
+  <title>Final Project</title>
+  <base href="../" >
+  <link rel="stylesheet" href="css/projects.css"  type="text/css">
 </head>
-<!-- //Head -->
 
 <!-- Body -->
 <body>
+  <!-- About -->
+  <div class="about">
+    <h1>Final Project - iMaterialist Furniture Challenge</h1>
+    <h2>Introduction</h2>
+    <p>I decided to participate in the <a href="https://www.kaggle.com/c/imaterialist-challenge-furniture-2018">iMaterialist Furniture Contest</a>
+     hosted by Kaggle as my computer vision final project. Kaggle is website concentrated on data science and machine learning that hosts online competitions centered around problems in these fields. Challenges and their corresponding data are submitted by companies and users allowing those that compete in them to create models that apply to real world problems. The iMaterialist Furniture Contest is one of these challenges focused on improving the accuracy with which recognition machines correctly label images of furniture. </p>
+    <br>
+    <p>Although this problem may not seem terribly difficult at first glance, there are a number of challenges. For example, just within the general category label of “chair,” there are a wide variety of furniture pieces that would fit (see below), despite them having very different appearances. Recognizing these various images as all being considered same classification is not a trivial task for a computer.</p>
+    <br>
+    <img src="images/projects/computer_vision/final_project/antique-chair.jpg" class="final_project_chairs">
+    <img src="images/projects/computer_vision/final_project/beach-chair.jpg" class="final_project_chairs">
+    <img src="images/projects/computer_vision/final_project/blue-chair.jpg" class="final_project_chairs">
+    <img src="images/projects/computer_vision/final_project/book-chair.jpg" class="final_project_chairs">
+    <br><br>
+    <br><br>
+    <p>On the other end of the spectrum, there are also pieces of furniture that look extremely similar, but subtle nuances would result in them being classified slightly differently. The example the iMaterialist competition gives is further differentiating within the general “chair” category between “ball chair” and “egg chair.” Although this may appear to be a trivial differentiation, to an online shopper this may be important. Add in other challenges like small color shade differences, varying levels of occlusion, etc. and this problem becomes even more challenging. With the popularity of online shopping continuously rising, this idea of increasing the accuracy of furniture categorization among recognition machines is very appealing.</p>
+    <br><br>
+  </div>    
 
-    <!-- About -->
-    <div class="agileabout" id="agileabout">
-        <div class="container-fluid">
+  <div class="relatedwork">
+    <h3>Related Work</h3>
+    <p>There are many works and extensive research exploring this problem or problems very similar to it. Below are a small selection.
+    <br>
+    <a href="https://www.cs.princeton.edu/news/article/armchair-victory-computers-recognize-everyday-objects">Armchair victory: Computers that recognize everyday objects</a>
+    <br>
+    <a href="https://aiweb.techfak.uni-bielefeld.de/files/masterthesis.pdf">Furniture Recognition using Implicit Shape Models on 3D Data</a>
+    <br>
+    <a href="https://www.abtosoftware.com/blog/kitchen-furniture-appliances-recognition-in-photos">Kitchen Furniture and Appliances Recognition</a>
+    <br>
+    <a href="https://vision.in.tum.de/_media/spezial/bib/usenko12furniture.pdf">Furniture Classification using WWW CAD Models</a>
+    <br>
+    <a href="https://arxiv.org/abs/1703.02445">Object classification in images of Neoclassical furniture using Deep Learning</a>
+    </p>
+    <br><br>
+  </div>
 
-            <h2>Final Project - iMaterialist Furniture Challenge</h2>
+  <div class="approach">
+    <h3>Approach and Implementation</h3>
+    <p>The Kaggle contest provides the data in three separate sections: train, validation, and test. The train and validation data include image urls and their corresponding labels. The test data is made up of only image urls and is what the participant is expected to predict labels for.</p>
+    <br><br>
+    <p>To train on the data, I utilized Tensorflow and Keras. Tensorflow is an open source machine learning 
+    module initially released in 2015 by Google. This invaluable tool gives anyone that knows how to code 
+    access to a software package that is the culmination of years of research and development in machine 
+    learning. Keras is a library that is built on top of Tensorflow that makes training models using 
+    Tensorflow even more straightforward.</p>
+    <br><br>
+    <p>In training the model, I also used a technique known as transfer learning. Transfer learning involves 
+    using a model that has been trained on an extensive dataset and using the weights from that model to begin
+    training for the desired task. I used the VGG16 ImageNet model as base, an image classification model that was trained on 1000 different classes.</p>
+    <br><br>
+    <p>The contest provides over 180,000 labeled images to use for training. With a dataset this large, my
+    Macbook Pro was no match for the computation power needed to train the model in a reasonable amount of 
+    time. To get around this, I decided to delve into the world of cloud computing, and spin up a large EC2 
+    (Elastic Cloud Compute) instance in AWS (Amazon Web Services). EC2 instances are virtual machines in the
+    cloud. For $2.30/hour (pay-as-you-go model), I was able to spin up an instance with specs that dwarfed my machine, and was able to train the model in a fraction of the time. The extremely fast connection speeds 
+    of the instance (running in an AWS datacenter), 10Gb/s for this particular instance, enabled me to download the training, validation, and test image sets with ease as well (over 20GB of images).</p>
+    <br><br>
+    <img src="images/projects/computer_vision/final_project/ec2.png" class="final_project_results">
+    <br><br>
+    <p>Screenshot showing the m5.12xlarge EC2 instance.</p>
+    <br><br>
+    <img src="images/projects/computer_vision/final_project/results.png" class="final_project_results">
+    <br><br>
+    <p>Results of 10 epochs showing a model with ~50% accuracy on the validation data.</p>
+    <br><br>
+  </div>
 
-            <div class="agileabout-grids">
-                <div class="col-md-12 agileabout-grid agileabout-grid-1">
-                    <h3>Introduction</h3>
-                    <p>I decided to participate in the <a href="https://www.kaggle.com/c/imaterialist-challenge-furniture-2018">iMaterialist Furniture Contest</a>
-                     hosted by Kaggle as my computer vision final project. Kaggle is website concentrated on data science and machine learning that hosts online competitions centered around problems in these fields. Challenges and their corresponding data are submitted by companies and users allowing those that compete in them to create models that apply to real world problems. The iMaterialist Furniture Contest is one of these challenges focused on improving the accuracy with which recognition machines correctly label images of furniture. </p>
-                    <br>
-                    <p>Although this problem may not seem terribly difficult at first glance, there are a number of challenges. For example, just within the general category label of “chair,” there are a wide variety of furniture pieces that would fit (see below), despite them having very different appearances. Recognizing these various images as all being considered same classification is not a trivial task for a computer.</p>
-                    <br>
-                    <img src="images/projects/computer_vision/final_project/antique-chair.jpg" class="final_project_chairs">
-                    <img src="images/projects/computer_vision/final_project/beach-chair.jpg" class="final_project_chairs">
-                    <img src="images/projects/computer_vision/final_project/blue-chair.jpg" class="final_project_chairs">
-                    <img src="images/projects/computer_vision/final_project/book-chair.jpg" class="final_project_chairs">
-                    <br><br>
-                    <br><br>
-                    <p>On the other end of the spectrum, there are also pieces of furniture that look extremely similar, but subtle nuances would result in them being classified slightly differently. The example the iMaterialist competition gives is further differentiating within the general “chair” category between “ball chair” and “egg chair.” Although this may appear to be a trivial differentiation, to an online shopper this may be important. Add in other challenges like small color shade differences, varying levels of occlusion, etc. and this problem becomes even more challenging. With the popularity of online shopping continuously rising, this idea of increasing the accuracy of furniture categorization among recognition machines is very appealing.</p>
-                    <br><br>
-                </div>    
-                <div class="col-md-12 agileabout-grid agileabout-grid-1">
-                    <h3>Related Work</h3>
-                    <p>There are many works and extensive research exploring this problem or problems very similar to it. Below are a small selection.
-                    <br>
-                    <a href="https://www.cs.princeton.edu/news/article/armchair-victory-computers-recognize-everyday-objects">Armchair victory: Computers that recognize everyday objects</a>
-                    <br>
-                    <a href="https://aiweb.techfak.uni-bielefeld.de/files/masterthesis.pdf">Furniture Recognition using Implicit Shape Models on 3D Data</a>
-                    <br>
-                    <a href="https://www.abtosoftware.com/blog/kitchen-furniture-appliances-recognition-in-photos">Kitchen Furniture and Appliances Recognition</a>
-                    <br>
-                    <a href="https://vision.in.tum.de/_media/spezial/bib/usenko12furniture.pdf">Furniture Classification using WWW CAD Models</a>
-                    <br>
-                    <a href="https://arxiv.org/abs/1703.02445">Object classification in images of Neoclassical furniture using Deep Learning</a>
-                    </p>
-                    <br><br>
-                </div>
-
-                <div class="col-md-12 agileabout-grid agileabout-grid-1">
-                    <h3>Approach and Implementation</h3>
-                    <p>The Kaggle contest provides the data in three separate sections: train, validation, and test. The train and validation data include image urls and their corresponding labels. The test data is made up of only image urls and is what the participant is expected to predict labels for.</p>
-                    <br><br>
-                    <p>To train on the data, I utilized Tensorflow and Keras. Tensorflow is an open source machine learning 
-                    module initially released in 2015 by Google. This invaluable tool gives anyone that knows how to code 
-                    access to a software package that is the culmination of years of research and development in machine 
-                    learning. Keras is a library that is built on top of Tensorflow that makes training models using 
-                    Tensorflow even more straightforward.</p>
-                    <br><br>
-                    <p>In training the model, I also used a technique known as transfer learning. Transfer learning involves 
-                    using a model that has been trained on an extensive dataset and using the weights from that model to begin
-                    training for the desired task. I used the VGG16 ImageNet model as base, an image classification model that was trained on 1000 different classes.</p>
-                    <br><br>
-                    <p>The contest provides over 180,000 labeled images to use for training. With a dataset this large, my
-                    Macbook Pro was no match for the computation power needed to train the model in a reasonable amount of 
-                    time. To get around this, I decided to delve into the world of cloud computing, and spin up a large EC2 
-                    (Elastic Cloud Compute) instance in AWS (Amazon Web Services). EC2 instances are virtual machines in the
-                    cloud. For $2.30/hour (pay-as-you-go model), I was able to spin up an instance with specs that dwarfed my machine, and was able to train the model in a fraction of the time. The extremely fast connection speeds 
-                    of the instance (running in an AWS datacenter), 10Gb/s for this particular instance, enabled me to download the training, validation, and test image sets with ease as well (over 20GB of images).</p>
-                    <br><br>
-                    <img src="images/projects/computer_vision/final_project/ec2.png" class="final_project_results">
-                    <br><br>
-                    <p>Screenshot showing the m5.12xlarge EC2 instance.</p>
-                    <br><br>
-                    <img src="images/projects/computer_vision/final_project/results.png" class="final_project_results">
-                    <br><br>
-                    <p>Results of 10 epochs showing a model with ~50% accuracy on the validation data.</p>
-                    <br><br>
-                </div>
-
-                 <div class="col-md-12 agileabout-grid agileabout-grid-1">
-                    <h3>Analysis and Conclusions</h3>
-                    <img src="images/projects/computer_vision/final_project/entry.png" class="final_project_results">
-                    <br><br>
-                    <p>My best entry for the Kaggle contest had ~48% accuracy on the test dataset of 12800 images. These 
-                    predictions were made using the model from the training graph shown above. This number is a few 
-                    percentage points lower than it could be because I was only able to download ~12200 out of the 12800 images, so ~600 of my predictions were just a statically set value (1).</p>
-                    <br><br>
-                    <h4>Future Work</h4>
-                    <p>The iMaterialist Furniture Contest deadline is not until May 23rd, leaving me time to explore further approaches and adjustments. Next steps include trying to train other base models and seeing how they fare in comparison to the VGG16 ImageNet results. Another option will be to attempt to train a model from scratch instead of transfer learning.</p>
-                    <br><br>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-        </div>
-    </div>
+   <div class="conclusion">
+      <h3>Analysis and Conclusions</h3>
+      <img src="images/projects/computer_vision/final_project/entry.png" class="final_project_results">
+      <br><br>
+      <p>My best entry for the Kaggle contest had ~48% accuracy on the test dataset of 12800 images. These 
+      predictions were made using the model from the training graph shown above. This number is a few 
+      percentage points lower than it could be because I was only able to download ~12200 out of the 12800 images, so ~600 of my predictions were just a statically set value (1).</p>
+      <br><br>
+      <h4>Future Work</h4>
+      <p>Next steps include trying to train other base models and seeing how they fare in comparison to the VGG16 ImageNet results. Another option will be to attempt to train a model from scratch instead of transfer learning.</p>
+      <br><br>
+  </div>
 
 </body>
-<!-- //Body -->
 
 </html>
