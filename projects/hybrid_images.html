@@ -16,7 +16,7 @@
     <h1>Hybrid Images Project</h1>
     <br><br>
     <h2>Overview</h2>
-    <p>The goal of this project was to create hybrid images using the approach described in the SIGGRAPH 2006 paper by Oliva, Torralba, and Schyns. Hybrid images are static images that change in interpretation as a function of the viewing distance. The basic idea is that high frequency tends to dominate perception when it is available, but, at a distance, only the low frequency (smooth) part of the signal can be seen. By blending the high frequency portion of one image with the low-frequency portion of another, you get a hybrid image that leads to different interpretations at different distances.</p>
+    <p>The goal of this project was to create hybrid images using the approach described in the SIGGRAPH 2006 paper by Oliva, Torralba, and Schyns. Hybrid images are static images that change in interpretation as a function of the viewing distance. High frequency tends to dominate perception when it is available, but, at a distance, only the low frequency (smooth) part of the signal can be seen. Blending the high frequency portion of one image with the low-frequency portion of another, results in a hybrid image that leads to different interpretations at different distances.</p>
     <br><br>
   </div>
 
@@ -25,6 +25,7 @@
     <h2>Process</h2>
     <ol>
         <li>Picking Images</li>
+        <br>
         <p>The first step is to find two images that will look good as a hybrid image.
         A good way to do this is to find images that share features, such as eyes, that
         can be used to align the images. One image will need to be designated as the 
@@ -33,20 +34,24 @@
         that will be visible when the image is very small/viewed from far away.</p>
         <br>
         <li>Convert Low-Pass Image to Greyscale</li>
+        <br>
         <p>The designated low-pass image is converted to greyscale before any filtering 
         takes place. This helps the color in the high-pass image show its colors well 
         when viewing up close without mashing with the designated low-pass's colors.</p>
         <br>
         <li>Pre-filtering 2D Fourier Transforms</li>
+        <br>
         <p>The log magnitudes of the Fourier transforms of the designated low-pass 
         (in greyscale) and high-pass images are calculated and plotted.</p>
         <br>
         <li>Choose Alignment Points</li>
+        <br>
         <p>Two points are chosen on each image to be used to align and scale the images 
         appropriately. For instance, if each picture contained a set of eyes, the eyes
         on each image would be a possible good pick to align and scale on.</p>
         <br>
         <li>Filtering</li>
+        <br>
         <p>Each image is passed through their designated filters. The designated
         low-pass image is passed through a standard 2D Gaussian filter. The 
         designated high-pass image is passed the impulse filter minus the Gaussian 
@@ -55,17 +60,21 @@
         hybrid effect.</p>
         <br>
         <li>Filtered Images 2D Fourier Transforms</li>
+        <br>
         <p>The log magnitudes of the Fourier transforms of the low-pass and high-pass 
         filtered images are calculated and plotted.</p>
         <br>
         <li>Create Hybrid Image</li>
+        <br>
         <p>The two filtered images are averaged together to create the hybrid image.</p>
         <br>
         <li>Hybrid Image Cropping</li>
+        <br>
         <p>The raw hybrid image is cropped to get the core hybrid features only, and 
         cut out the often choppy and overlapped borders.</p>
         <br>
         <li>Hybrid Image Pyramid</li>
+        <br>
         <p>A few levels of a Gaussian pyramid of the final cropped hybrid image are 
         generated so that the effect of the high-pass intense viewpoint can be seen 
         changing to the low-pass intense viewpoint.</p>

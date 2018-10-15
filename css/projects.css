@@ -1,5 +1,6 @@
 * {
   font-family: "Raleway", sans-serif;
+  background-color: whitesmoke;
 }
 
 h1 {
@@ -53,6 +54,11 @@ p {
   text-align: center;
   font-size: 20px;
   padding: 10px 5px 10px 5px;
+}
+
+
+.process p {
+  font-size: 16px;
 }
 
 .process li {

@@ -1,140 +1,148 @@
 * {
-	margin: 0;
-	padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: whitesmoke;
+    background-color: whitesmoke;
 }
 
 h1 {
-	width: 500px;
-	margin: 0 auto;
-	letter-spacing: 8px;
-  text-align: center;
-  border: 4px solid #669999;
-  border-radius: 8px;
-  padding: 10px;
-  font-family: "Raleway", sans-serif;
-  color: black;
+    width: 500px;
+    margin: 0 auto;
+    letter-spacing: 8px;
+    text-align: center;
+    border: 4px solid #669999;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: "Raleway", sans-serif;
+    color: black;
 }
 
 h2 { 
-	font-family: "Raleway", sans-serif;
-  margin: 30px 20px 30px 20px;
+    font-family: "Raleway", sans-serif;
+    text-align: center;
+    padding: 10px;
 }
 
 p, footer {
-	font-family: "Raleway", sans-serif;
-  margin: 20px 20px;
-  line-height: 2;
+    font-family: "Raleway", sans-serif;
+    margin: 20px 20px;
+    line-height: 2;
 }
 
 ul {
-  font-family: "Raleway", sans-serif;
-  font-size: 18px;
-  font-weight: lighter;
-  color: #606060;
-  margin: 20px 250px;
-  line-height: 3;
-  list-style-type: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #606060;
+    margin: 20px 250px;
+    line-height: 3;
+    list-style-type: none;
 }
 
 a {
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 nav {
-	width: 100%;
-  padding:15px 0;
-	margin: 20px auto 50px auto;
-  font-size: 20px;
-  background-color: #669999;
-  text-align: center;
+    width: 100%;
+    padding:15px 0;
+    margin: 0px auto 50px auto;
+    font-size: 20px;
+    background-color: #669999;
+    text-align: center;
 }
 
 nav a {
-  font-family: "Bradley Hand", cursive;
-  color: black;
-	text-align: center;
-  margin: 0 10px;
+    font-family: "Bradley Hand", cursive;
+    color: black;
+    text-align: center;
+    margin: 0 10px;
 }
 
 footer {
-  margin: 5px 15px;
+    margin: 5px 15px;
 }
 
 footer, footer a {
-  color: gray;
-  clear: left;
+    color: gray;
+    clear: left;
 }
 
 .banner {
-	width: 100%;
-	height: 300px;
+    width: 100%;
+    height: 300px;
 }
 
 .header {
-	position: relative;
-  text-align: center;
+    position: relative;
+    text-align: center;
 }
 
 .centered {
-	position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .about {
-  width: 600px;
-  overflow: scroll;
-  padding-bottom: 150px;
+    width: 600px;
+    padding-bottom: 150px;
 }
 
 .about a {
-  color: gray;
+    color: gray;
 }
 
 .aboutme {
-  width: 400px;
-  height: auto;
-  float: right;
-  margin-right: 125px;
+    width: 400px;
+    height: auto;
+    float: right;
+    margin-right: 125px;
 }
 
 .resume {
-  padding: 15px 0;
-  background-color: rgb(215, 235, 235);
+    padding: 15px 0;
+    background-color: rgb(215, 235, 235);
 }
 
 .courses {
-  padding: 20px 0;
+    width: 1000px;
+    margin: 10px auto;
 }
 
-.classes_second_half {
-  position: absolute;
-  left: 400px;
-  top: 1085px;
+.column2 {
+    position: absolute;
+    left: 420px;
+    top: 996px;
+}
 
+.project {
+    background-color: #669999;
+    padding: 20px 0;
+}
+
+.project a img {
+    margin: 10px 20px;
+    max-width: 300px;
 }
 
 .projects {
-  background-color: #669999;
-  padding: 20px 0;
-}
-
-.projects a img {
-  margin: 10px 20px;
-  max-width: 300px;
+    position: relative;
+    text-align: center;
+    color: white;
 }
 
 .align_left {
-  float: left;
+    float: left;
 }
 
 .align_right {
-  float: right;
+    float: right;
 }
+
 
