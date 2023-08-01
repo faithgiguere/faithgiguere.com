@@ -1,0 +1,31 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.about {
+  margin: 18vh 10vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4vw;
+}
+
+h2 {
+  font-size: 2vw;
+}
+
+nav {
+  padding:0.5vh 0;
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: rgb(44, 40, 40);
+  margin: 0 5px;
+  letter-spacing: 0px;
+
+}
+
