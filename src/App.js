@@ -14,6 +14,13 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import banner from "./images/usgs.jpg";
 import profile_photo from "./images/profile_picture.png";
 import about_photo from "./images/washington_monument.webp";
+import plane from "./images/plane.jpg";
+import alignment from "./images/image_alignment.jpg";
+import hybrid from "./images/hybrid_images.jpg";
+import autostereogram from "./images/autostereogram.jpg";
+
+import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
 
 import {
   ChakraProvider,
@@ -21,68 +28,72 @@ import {
   CardBody,
   Image,
   Stack,
-  Heading,
   Text,
   Center,
   Box,
   VStack,
+  HStack,
   Link,
+  Flex,
 } from "@chakra-ui/react";
 
 const projects = [
   {
-    name: "Test 1",
-    description: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+    name: "Go/No-Go Decision Support Tool",
+    description:
+      "Supporting general aviation pilots in training in making an informed decision on whether conditions are safe to proceed with a flight (go) or if it is better to delay or cancel (no-go) based on a variety of factors.",
+    background: plane,
   },
   {
-    name: "Test 2",
-    description: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+    name: "Image Alignment",
+    description:
+      "Using images from the Prokudin-Gorskii digitized photo collection, this project consists of taking three color channel images and aligning them to create a single RGB color image.",
+    background: alignment,
   },
   {
-    name: "Test 3",
-    description: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+    name: "Hybrid Images",
+    description:
+      "Hybrid images are static images that change in interpretation as a function of the viewing distance.",
+    background: hybrid,
   },
   {
-    name: "Test 4",
-    description: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+    name: "Autosterogram Generator",
+    description: "Generating autostereograms from depth maps.",
+    background: autostereogram,
   },
 ];
 
 const experiences = [
   {
-    name: "Test1",
-    description: "description1",
-    location: "Greenbelt, MD",
-    background: "",
-    date: "test",
+    name: "Software Engineer",
+    description: "ADNET Systems, Inc.",
+    location: "NASA Goddard Space Flight Center, Greenbelt, MD",
+    date: "July 2019 - Present",
   },
   {
-    name: "Test2",
-    description: "description2",
-    location: "Greenbelt, MD",
-    background: "",
-    date: "test",
+    name: "Software Developer Intern",
+    description: "DSFederal",
+    location: "Rockville, MD",
+    date: "May - June 2019",
   },
   {
-    name: "Test3",
-    description: "description3",
-    location: "Greenbelt, MD",
-    background: "",
-    date: "test",
+    name: "B.S. in Computer Science",
+    description: "George Washington University",
+    location: "Washington, DC",
+    date: "May 2019",
   },
   {
-    name: "Test4",
-    description: "description4",
-    location: "Greenbelt, MD",
-    background: "",
-    date: "test",
+    name: "Student Technician",
+    description:
+      "The George Washington University Division of Information Technology",
+    location: "Washington, DC",
+    date: "December 2015 - June 2019",
   },
   {
-    name: "Test5",
-    description: "description5",
-    location: "Greenbelt, MD",
-    background: "",
-    date: "test",
+    name: "Instructor",
+    description: "Code4Life",
+    location: "Washington, DC",
+    date: "February - May 2017",
   },
 ];
 
@@ -93,7 +104,7 @@ function App() {
         <VStack
           px={"12"}
           m={"10"}
-          bg={"gray.300"}
+          bg={"#f5f5f5"}
           opacity={"0.9"}
           borderRadius={"lg"}
           height={"60vh"}
@@ -114,6 +125,17 @@ function App() {
             </Link>
             <Link href="#projects">Projects</Link>
           </nav>
+          <HStack>
+            <Link href="https://www.linkedin.com/in/faith-mayer/" isExternal>
+              <BsLinkedin size={"25"} />
+            </Link>
+            <Link href="https://github.com/faithmayer" isExternal>
+              <BsGithub size={"25"} px={"3"} />
+            </Link>
+            <Link href="mailto:faithnmayer@gmail.com" isExternal>
+              <MdEmail size={"30"} />
+            </Link>
+          </HStack>
         </VStack>
       </Center>
 
@@ -122,6 +144,8 @@ function App() {
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
           variant="elevated"
+          marginY={"30"}
+          bg={"#f5f5f5"}
         >
           <Image
             objectFit="cover"
@@ -132,7 +156,7 @@ function App() {
 
           <Stack>
             <CardBody>
-              <Text id="about" fontSize={"3xl"}>
+              <Text id="about" fontSize={"4xl"}>
                 About Me
               </Text>
 
@@ -140,57 +164,55 @@ function App() {
                 I am a software engineer based in Washington, DC currently
                 working at NASA's Goddard Earth Sciences Data and Information
                 Services Center{" "}
-                <a href="https://disc.gsfc.nasa.gov" target="_blank">
-                  (GES DISC)
-                </a>{" "}
-                located at Goddard Space Flight Center. I graduated from{" "}
-                <a href="https://gwu.edu" target="_blank">
-                  George Washington University
-                </a>{" "}
-                with a B.S. in Computer Science. Outside of work, I enjoy taking
+                <a href="https://disc.gsfc.nasa.gov">(GES DISC)</a> located at
+                Goddard Space Flight Center. I graduated from{" "}
+                <a href="https://gwu.edu">George Washington University</a> with
+                a B.S. in Computer Science. Outside of work, I enjoy taking
                 flying lessons and working towards earning my private pilot
-                license. I am also an avid hiker and enjoy studying and playing
-                chess.
+                license. I also love hiking, boxing, reading across a variety of
+                genres, and studying chess.
               </Text>
             </CardBody>
           </Stack>
         </Card>
       </div>
-
-      <Text id="experience" fontSize={"3xl"} px="20">
-        Experience
-      </Text>
+      <Center>
+        <Text id="experience" fontSize={"4xl"} py={"6"}>
+          Experience
+        </Text>
+      </Center>
       <VerticalTimeline lineColor="black">
         {experiences.map((experience) => (
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: "#416aa0", color: "#fff" }}
+            contentStyle={{ background: "#f5f5f5" }}
             contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
-            date="2011 - present"
-            iconStyle={{ background: "#f5c988", color: "#fff" }}
+            date={experience.date}
+            iconStyle={{ background: "#40689f", color: "#fff" }}
           >
             <Text className="vertical-timeline-element-title">
               {experience.name}
             </Text>
             <h4 className="vertical-timeline-element-subtitle">
-              {experience.location}
+              {experience.description}
             </h4>
-            <p>{experience.description}</p>
+            <p>{experience.location}</p>
           </VerticalTimelineElement>
         ))}
       </VerticalTimeline>
 
-      <Box m={"10%"}>
+      <Center>
+        <Text id="projects" fontSize={"4xl"} py="20">
+          Projects
+        </Text>
+      </Center>
+
+      <Box mx={"10%"} mb={"10%"} boxShadow={"lg"} borderRadius={"md"}>
         <Swiper
-          spaceBetween={50}
           slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
           centeredSlides={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
           pagination={{
             clickable: true,
           }}
@@ -199,16 +221,22 @@ function App() {
         >
           {projects.map((project) => (
             <SwiperSlide>
-              <Box
-                p={"10"}
-                border={"1px"}
-                borderColor={"gray.200"}
-                borderRadius={"md"}
-                boxShadow={"lg"}
-              >
-                <Text>{project.name}</Text>
-                <Text>{project.description}</Text>
-              </Box>
+              <HStack bg={"#f5f5f5"} h={"100%"}>
+                <Box flex={"2"}>
+                  <Image src={project.background} borderLeftRadius={"lg"} />
+                </Box>
+                <Box
+                  flex={"1"}
+                  height={"45vh"}
+                  p={"4"}
+                  bg={"#f5f5f5"}
+                >
+                  <Text fontSize={"4xl"}>{project.name}</Text>
+                  <Text pw={"3"} pt={"4"}>
+                    {project.description}
+                  </Text>
+                </Box>
+              </HStack>
             </SwiperSlide>
           ))}
         </Swiper>
