@@ -14,6 +14,11 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import banner from "./images/usgs.jpg";
 import profile_photo from "./images/profile_picture.png";
 import about_photo from "./images/washington_monument.webp";
+import goddard from "./images/logos/goddard.png";
+import dsfederal from "./images/logos/dsfederal.jpg";
+import gwu from "./images/logos/gwu.png";
+import gwu_it from "./images/logos/gwu_it.jpg";
+import code4life from "./images/logos/code4life.png";
 import plane from "./images/plane.jpg";
 import alignment from "./images/image_alignment.jpg";
 import hybrid from "./images/hybrid_images.jpg";
@@ -34,8 +39,46 @@ import {
   VStack,
   HStack,
   Link,
-  Flex,
 } from "@chakra-ui/react";
+
+const experiences = [
+  {
+    name: "Software Engineer",
+    description: "ADNET Systems, Inc.",
+    location: "NASA Goddard Space Flight Center, Greenbelt, MD",
+    date: "July 2019 - Present",
+    logo: goddard,
+  },
+  {
+    name: "Software Development Intern",
+    description: "DSFederal",
+    location: "Rockville, MD",
+    date: "May - June 2019",
+    logo: dsfederal,
+  },
+  {
+    name: "B.S. in Computer Science",
+    description: "George Washington University",
+    location: "Washington, DC",
+    date: "May 2019",
+    logo: gwu,
+  },
+  {
+    name: "Student Technician",
+    description:
+      "The George Washington University Division of Information Technology",
+    location: "Washington, DC",
+    date: "December 2015 - June 2019",
+    logo: gwu_it,
+  },
+  {
+    name: "Instructor",
+    description: "Code4Life",
+    location: "Washington, DC",
+    date: "February - May 2017",
+    logo: code4life,
+  },
+];
 
 const projects = [
   {
@@ -60,40 +103,6 @@ const projects = [
     name: "Autosterogram Generator",
     description: "Generating autostereograms from depth maps.",
     background: autostereogram,
-  },
-];
-
-const experiences = [
-  {
-    name: "Software Engineer",
-    description: "ADNET Systems, Inc.",
-    location: "NASA Goddard Space Flight Center, Greenbelt, MD",
-    date: "July 2019 - Present",
-  },
-  {
-    name: "Software Developer Intern",
-    description: "DSFederal",
-    location: "Rockville, MD",
-    date: "May - June 2019",
-  },
-  {
-    name: "B.S. in Computer Science",
-    description: "George Washington University",
-    location: "Washington, DC",
-    date: "May 2019",
-  },
-  {
-    name: "Student Technician",
-    description:
-      "The George Washington University Division of Information Technology",
-    location: "Washington, DC",
-    date: "December 2015 - June 2019",
-  },
-  {
-    name: "Instructor",
-    description: "Code4Life",
-    location: "Washington, DC",
-    date: "February - May 2017",
   },
 ];
 
@@ -164,13 +173,21 @@ function App() {
                 I am a software engineer based in Washington, DC currently
                 working at NASA's Goddard Earth Sciences Data and Information
                 Services Center{" "}
-                <a href="https://disc.gsfc.nasa.gov">(GES DISC)</a> located at
-                Goddard Space Flight Center. I graduated from{" "}
-                <a href="https://gwu.edu">George Washington University</a> with
-                a B.S. in Computer Science. Outside of work, I enjoy taking
+                <Link
+                  href="https://disc.gsfc.nasa.gov"
+                  color={"blue"}
+                  isExternal
+                >
+                  (GES DISC){" "}
+                </Link>
+                located at Goddard Space Flight Center. I graduated from{" "}
+                <Link href="https://gwu.edu" color={"blue"} isExternal>
+                  George Washington University{" "}
+                </Link>
+                with a B.S. in Computer Science. Outside of work, I am taking
                 flying lessons and working towards earning my private pilot
-                license. I also love hiking, boxing, reading across a variety of
-                genres, and studying chess.
+                license. I also enjoy hiking, boxing, reading across a variety
+                of genres, and studying chess.
               </Text>
             </CardBody>
           </Stack>
@@ -190,13 +207,24 @@ function App() {
             date={experience.date}
             iconStyle={{ background: "#40689f", color: "#fff" }}
           >
-            <Text className="vertical-timeline-element-title">
-              {experience.name}
-            </Text>
-            <h4 className="vertical-timeline-element-subtitle">
-              {experience.description}
-            </h4>
-            <p>{experience.location}</p>
+            <HStack>
+              <Image
+                src={experience.logo}
+                h={"20vh"}
+                borderRadius={"100%"}
+                p={"2"}
+              />
+              <Box>
+                <Text className="vertical-timeline-element-title">
+                  {experience.name}
+                </Text>
+
+                <h4 className="vertical-timeline-element-subtitle">
+                  {experience.description}
+                </h4>
+                <p>{experience.location}</p>
+              </Box>
+            </HStack>
           </VerticalTimelineElement>
         ))}
       </VerticalTimeline>
@@ -225,12 +253,7 @@ function App() {
                 <Box flex={"2"}>
                   <Image src={project.background} borderLeftRadius={"lg"} />
                 </Box>
-                <Box
-                  flex={"1"}
-                  height={"45vh"}
-                  p={"4"}
-                  bg={"#f5f5f5"}
-                >
+                <Box flex={"1"} height={"45vh"} p={"4"} bg={"#f5f5f5"}>
                   <Text fontSize={"4xl"}>{project.name}</Text>
                   <Text pw={"3"} pt={"4"}>
                     {project.description}
@@ -240,6 +263,17 @@ function App() {
             </SwiperSlide>
           ))}
         </Swiper>
+      </Box>
+      <Box bg={"#fff"} p={5}>
+        <Text fontSize={"sm"}>
+          Photo from USGS on{" "}
+          <Link href={"https://unsplash.com/photos/jePzo7RYzac"} isExternal>
+            Unsplash
+          </Link>
+        </Text>
+        <Center>
+          <Text fontSize={"sm"}>© 2023 Faith Mayer. All rights reserved</Text>
+        </Center>
       </Box>
     </ChakraProvider>
   );
