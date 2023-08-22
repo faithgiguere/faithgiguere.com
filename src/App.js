@@ -181,7 +181,7 @@ function App() {
                   (GES DISC){" "}
                 </Link>
                 located at Goddard Space Flight Center. I graduated from{" "}
-                <Link href="https://gwu.edu" color={"blue"} isExternal>
+                <Link href="https://www.gwu.edu" color={"blue"} isExternal>
                   George Washington University{" "}
                 </Link>
                 with a B.S. in Computer Science. Outside of work, I am taking
@@ -214,7 +214,9 @@ function App() {
                 borderRadius={"100%"}
                 p={"2"}
               />
-              <Box>
+              <Box
+                mb={"12px"}
+              >
                 <Text className="vertical-timeline-element-title">
                   {experience.name}
                 </Text>
@@ -264,7 +266,7 @@ function App() {
           ))}
         </Swiper>
       </Box>
-      <Box bg={"#fff"} p={5}>
+      <VStack bg={"#fff"} p={5}>
         <Text fontSize={"sm"}>
           Photo from USGS on{" "}
           <Link href={"https://unsplash.com/photos/jePzo7RYzac"} isExternal>
@@ -272,9 +274,9 @@ function App() {
           </Link>
         </Text>
         <Center>
-          <Text fontSize={"sm"}>© 2023 Faith Mayer. All rights reserved</Text>
+          <Text fontSize={"sm"}>© 2023 Faith Mayer</Text>
         </Center>
-      </Box>
+      </VStack>
     </ChakraProvider>
   );
 }
