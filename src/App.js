@@ -44,8 +44,8 @@ import {
 const experiences = [
   {
     name: "Software Engineer",
-    description: "ADNET Systems, Inc.",
-    location: "NASA Goddard Space Flight Center, Greenbelt, MD",
+    description: "NASA Goddard Space Flight Center",
+    location: "Greenbelt, MD",
     date: "July 2019 - Present",
     logo: goddard,
   },
@@ -84,20 +84,23 @@ const projects = [
   {
     name: "Go/No-Go Decision Support Tool",
     description:
-      "Supporting general aviation pilots in training in making an informed decision on whether conditions are safe to proceed with a flight (go) or if it is better to delay or cancel (no-go) based on a variety of factors.",
+      "Supporting general aviation pilots in making an informed decision on whether conditions are safe to proceed with a flight (go) or if it is better to delay or cancel (no-go) based on a variety of factors.",
     background: plane,
+    url: "https://github.com/faithmayer/Go-NoGoDecision"
   },
   {
     name: "Image Alignment",
     description:
       "Using images from the Prokudin-Gorskii digitized photo collection, this project consists of taking three color channel images and aligning them to create a single RGB color image.",
     background: alignment,
+    url: "https://github.com/faithmayer/image-alignment"
   },
   {
     name: "Hybrid Images",
     description:
-      "Hybrid images are static images that change in interpretation as a function of the viewing distance.",
+      "Blending the high frequency portion of one image with the low-frequency portion of another, resulting in a hybrid image that leads to different interpretations at different distances.",
     background: hybrid,
+    url: "https://github.com/faithmayer/hybrid-images"
   },
   {
     name: "Autosterogram Generator",
@@ -121,8 +124,8 @@ function App() {
           <Image
             src={profile_photo}
             alt="Profile"
-            h={"50%"}
-            p={"3vh"}
+            h={"55%"}
+            p={"2vh"}
             borderRadius={"50%"}
             opacity={"1"}
           />
@@ -214,9 +217,7 @@ function App() {
                 borderRadius={"100%"}
                 p={"2"}
               />
-              <Box
-                mb={"12px"}
-              >
+              <Box mb={"12px"}>
                 <Text className="vertical-timeline-element-title">
                   {experience.name}
                 </Text>
@@ -256,7 +257,9 @@ function App() {
                   <Image src={project.background} borderLeftRadius={"lg"} />
                 </Box>
                 <Box flex={"1"} height={"45vh"} p={"4"} bg={"#f5f5f5"}>
-                  <Text fontSize={"4xl"}>{project.name}</Text>
+                  <Link href={project.url} isExternal>
+                    <Text fontSize={"4xl"}>{project.name}</Text>
+                  </Link>
                   <Text pw={"3"} pt={"4"}>
                     {project.description}
                   </Text>
