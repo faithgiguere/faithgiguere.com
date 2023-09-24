@@ -13,6 +13,11 @@ import {
   Th,
   Container,
 } from "@chakra-ui/react";
+import styled from "@emotion/styled";
+
+const TextWithSpace = styled(Text)`
+  margin-bottom: 15px
+`
 
 const HybridImages = () => {
   return (
@@ -21,7 +26,7 @@ const HybridImages = () => {
         <Text fontSize={"5xl"}>Hybrid Images</Text>
       </Center>
       <Text fontSize={"3xl"}>Overview</Text>
-      <Text>
+      <TextWithSpace>
         The goal of this project was to create hybrid images using the approach
         described in the SIGGRAPH 2006 paper by Oliva, Torralba, and Schyns.
         Hybrid images are static images that change in interpretation as a
@@ -31,11 +36,11 @@ const HybridImages = () => {
         frequency portion of one image with the low-frequency portion of
         another, results in a hybrid image that leads to different
         interpretations at different distances.
-      </Text>
+      </TextWithSpace>
       <Text fontSize={"3xl"}>Process</Text>
       <OrderedList>
         <ListItem fontWeight="semibold">Picking Images</ListItem>
-        <Text>
+        <TextWithSpace>
           The first step is to find two images that will look good as a hybrid
           image. A good way to do this is to find images that share features,
           such as eyes, that can be used to align the images. One image will
@@ -43,63 +48,63 @@ const HybridImages = () => {
           most visible when the picture is large/ viewed up close. The other
           will be designated as the low-pass image, the image that will be
           visible when the image is very small/viewed from far away.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">
           Convert Low-Pass Image to Greyscale
         </ListItem>
-        <Text>
+        <TextWithSpace>
           The designated low-pass image is converted to greyscale before any
           filtering takes place. This helps the color in the high-pass image
           show its colors well when viewing up close without mashing with the
           designated low-pass's colors.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">
           Pre-filtering 2D Fourier Transforms
         </ListItem>
-        <Text>
+        <TextWithSpace>
           The log magnitudes of the Fourier transforms of the designated
           low-pass (in greyscale) and high-pass images are calculated and
           plotted.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">Choose Alignment Points</ListItem>
-        <Text>
+        <TextWithSpace>
           Two points are chosen on each image to be used to align and scale the
           images appropriately. For instance, if each picture contained a set of
           eyes, the eyes on each image would be a possible good pick to align
           and scale on.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">Filtering</ListItem>
-        <Text>
+        <TextWithSpace>
           Each image is passed through their designated filters. The designated
           low-pass image is passed through a standard 2D Gaussian filter. The
           designated high-pass image is passed the impulse filter minus the
           Gaussian filter. The cutoff-frequency for each filter was tuned for
           each set of images processed, since it is a good point of calibration
           to maximize the hybrid effect.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">
           Filtered Images 2D Fourier Transforms
         </ListItem>
-        <Text>
+        <TextWithSpace>
           The log magnitudes of the Fourier transforms of the low-pass and
           high-pass filtered images are calculated and plotted.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">Create Hybrid Image</ListItem>
-        <Text>
+        <TextWithSpace>
           The two filtered images are averaged together to create the hybrid
           image.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">Hybrid Image Cropping</ListItem>
-        <Text>
+        <TextWithSpace>
           The raw hybrid image is cropped to get the core hybrid features only,
           and cut out the often choppy and overlapped borders.
-        </Text>
+        </TextWithSpace>
         <ListItem fontWeight="semibold">Hybrid Image Pyramid</ListItem>
-        <Text>
+        <TextWithSpace>
           A few levels of a Gaussian pyramid of the final cropped hybrid image
           are generated so that the effect of the high-pass intense viewpoint
           can be seen changing to the low-pass intense viewpoint.
-        </Text>
+        </TextWithSpace>
       </OrderedList>
       <Container maxHeight="100px">
         <Text fontSize={"3xl"}>Example 1: Macaroni and Me</Text>

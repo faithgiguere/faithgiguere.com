@@ -243,7 +243,7 @@ const Home = () => {
                   {
                     project.url ? <Link href={project.url} target="_blank">
                       <Text fontSize={"4xl"}>{project.name}</Text>
-                    </Link> : <RouterLink to={{ pathname: project.path }}>
+                    </Link> : <RouterLink to={{ pathname: project.path }} target="_blank">
                     <Text fontSize={"4xl"} _hover={{
                       textDecoration: "underline"
                     }}>{project.name}</Text>
